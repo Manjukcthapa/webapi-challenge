@@ -66,16 +66,28 @@ router.put("/:id", (req, res) => {
   });
 
   router.post("/", (req, res) => {
-    const newAction = req.body;
+    const newProject = req.body;
     project
-      .insert(newAction)
-      .then(action => {
-        res.status(201).json(action);
+      .insert(newProject)
+      .then(project => {
+        res.status(201).json(project);
       })
       .catch(err => {
         res.status(500).json({ err: "cannot insert" });
       });
   });
+
+//   router.get("/:id/action", (req, res) => {
+//     const projectId = req.params.id;
+//     project
+//       .getProjectActions(projectId)
+//       .then(project => {
+//         res.status(200).json(project);
+//       })
+//       .catch(err => {
+//         res.status(500).json({ err: "no deleting here" });
+//       });
+//   });
 
 
 
